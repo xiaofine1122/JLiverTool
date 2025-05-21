@@ -1,7 +1,7 @@
 {
   "name": "jlivertool",
   "version": "develop",
-  "description": "Simple Bilibili Danmaku Tool Personalized modification",
+  "description": "Simple Bilibili Danmaku Tool Personalized modification SuperChat",
   "homepage": "https://github.com/xiaofine1122/JLiveTool",
   "main": "src/main.js",
   "scripts": {
