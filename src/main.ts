@@ -92,25 +92,25 @@ app.on('ready', async () => {
   )
   tray = new Tray(icon.resize({ width: 16, height: 16 }))
   const contextMenu = Menu.buildFromTemplate([
-    {
-      label: '关于',
-      type: 'normal',
-      click: () => {
-        dialog.showMessageBox(null, {
-          type: 'info',
-          title: '关于',
-          message: 'JLiverTool 弹幕机 v' + app.getVersion(),
-          detail: '作者：@Xinrea\n赞助：https://afdian.com/a/Xinrea',
-        })
-      },
-    },
-    {
-      label: '检查更新',
-      type: 'normal',
-      click: () => {
-        checkUpdateFromGithubAPI()
-      },
-    },
+    // {
+    //   label: '关于',
+    //   type: 'normal',
+    //   click: () => {
+    //     dialog.showMessageBox(null, {
+    //       type: 'info',
+    //       title: '关于',
+    //       message: 'JLiverTool 弹幕机 v' + app.getVersion(),
+    //       detail: '作者：@Xinrea\n赞助：https://afdian.com/a/Xinrea',
+    //     })
+    //   },
+    // },
+    // {
+    //   label: '检查更新',
+    //   type: 'normal',
+    //   click: () => {
+    //     checkUpdateFromGithubAPI()
+    //   },
+    // },
     {
       label: '鼠标穿透',
       submenu: [
@@ -168,9 +168,10 @@ app.on('ready', async () => {
   // 注册一个点击事件处理函数
   tray.on('click', () => {})
 
-  if (store.CheckUpdate) {
-    await checkUpdateFromGithubAPI()
-  }
+//取消自动更新逻辑
+  // if (store.CheckUpdate) {
+  //   await checkUpdateFromGithubAPI()
+  // }
 
   await backend_service.Start()
 })

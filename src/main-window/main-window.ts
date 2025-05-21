@@ -452,11 +452,11 @@ const appStatus = {
       this.speak(msg.sender.uname + '开通了' + levelToName(msg.guard_level))
     }
   },
-  onReceiveSuperchat(msg: SuperChatMessage) {
+  async onReceiveSuperchat(msg: SuperChatMessage) {
     console.log(msg)
     this.danmuPanel.doClean()
     // Superchat entry should not be able to remove in chat window
-    const $newEntry = createSuperchatEntry(msg, false)
+    const $newEntry = await createSuperchatEntry(msg, false)
     this.danmuPanel.handleNewEntry($newEntry)
     if (this.tts.superchat) {
       this.speak(msg.sender.uname + '发送了醒目留言说：' + msg.message)

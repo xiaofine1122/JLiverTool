@@ -10,6 +10,7 @@ import UpdateRoomTitleResponse from './api/room/update_room_title'
 import StopLiveResponse from './api/room/stop_live'
 import { NavResponse } from './api/nav_response'
 import StartLiveResponse from './api/room/start_live'
+import GetVideoInfoResponse from './api/video/video_info'
 import JLogger from '../logger'
 
 const log = JLogger.getInstance('biliapi')
@@ -274,6 +275,26 @@ class BiliApi {
       return (await raw_response.json()) as NavResponse
     } catch (e) {
       log.error(`Nav failed: ${e}`)
+      return null
+    }
+  }
+
+  public static async GetVideoInfo(
+    cookies: Cookies,
+    bvID: string
+  ): Promise<GetVideoInfoResponse> {
+    const url = `https://api.bilibili.com/x/web-interface/view?bvid=${bvID}`
+    const options = {
+      method: 'GET',
+      headers: {
+        Cookie: cookies.str(),
+      },
+    }
+    try {
+      const raw_response = await fetch(url, options)
+      return (await raw_response.json()) as GetVideoInfoResponse
+    } catch (e) {
+      log.error(`GetVideoInfo failed: ${e}`)
       return null
     }
   }

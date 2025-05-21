@@ -236,6 +236,7 @@ export class WindowManager {
     this._main_close_callback = mainClosedCallback
   }
 
+  //新打开的窗口都改为独立窗口
   public Start() {
     this._main_window = new Window(
       null,
@@ -246,14 +247,14 @@ export class WindowManager {
     )
     // window should be created and hide at start, cuz gift data stream need to be processed in window render process
     this._gift_window = new Window(
-      this._main_window,
+      null,
       WindowType.WGIFT,
       this._config_store,
       this._gift_loaded_callback
     )
 
     this._superchat_window = new Window(
-      this._main_window,
+      null,
       WindowType.WSUPERCHAT,
       this._config_store,
       this._superchat_loaded_callback
@@ -270,7 +271,7 @@ export class WindowManager {
       this._config_store
     )
     this._rank_window = new Window(
-      this._main_window,
+      null,
       WindowType.WRANK,
       this._config_store
     )

@@ -454,6 +454,17 @@ export default class BackendService {
         return resp
       }
     )
+    ipcMain.handle(
+      JEvent[JEvent.INVOKE_GET_VIDEO_INFO],
+      async (_,bvID: string) => {
+        const resp = await BiliApi.GetVideoInfo(
+          this._config_store.Cookies,
+          bvID
+        )
+        return resp
+      }
+    )
+
 
     this.mergeEventInit()
     this.userEventInit()
@@ -502,6 +513,17 @@ export default class BackendService {
     })
     ipcMain.handle(JEvent[JEvent.INVOKE_CLEAR_SUPERCHATS], async () => {
       await this._gift_store.Clear('superchat', this._room.getRealID())
+    })
+    ipcMain.handle(JEvent[JEvent.INVOKE_EXPORT_SUPERCHATS], async () => {
+      const stored_superchats = (await this._gift_store.Get(
+        'superchat',
+        this._room.getRealID()
+      )) as SuperChatMessage[]
+      log.info('Load stored superchats', {
+        superchat: stored_superchats.length,
+      })
+      return stored_superchats
+
     })
   }
 

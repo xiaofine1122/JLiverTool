@@ -9,6 +9,7 @@ import { GetGoalsResponse } from './lib/afdian/afdianapi'
 import StartLiveResponse from './lib/bilibili/api/room/start_live'
 import StopLiveResponse from './lib/bilibili/api/room/stop_live'
 import GetOnlineGoldRankResponse from './lib/bilibili/api/room/get_online_gold_rank'
+import GetVideoInfoResponse from './lib/bilibili/api/video/video_info'
 
 export type JLiverAPI = {
   get: (key: string, d: any) => any
@@ -50,6 +51,7 @@ export type JLiverAPI = {
     removeGiftEntry: (type: string, id: string) => Promise<void>
     clearGifts: () => Promise<void>
     clearSuperChats: () => Promise<void>
+    exportSuperChat: () => Promise<void>
     callCommand: (command: string) => Promise<void>
     startLive: (area_v2: string) => Promise<StartLiveResponse>
     stopLive: () => Promise<StopLiveResponse>
@@ -57,6 +59,7 @@ export type JLiverAPI = {
       page: number,
       page_size: number
     ) => Promise<GetOnlineGoldRankResponse>
+    getVideoInfo: (bvID: string) => Promise<GetVideoInfoResponse>
   }
   plugin: {
     invokePluginWindow: (plugin_id: string) => Promise<void>
@@ -228,6 +231,9 @@ contextBridge.exposeInMainWorld('jliverAPI', {
     clearSuperChats: () => {
       return ipcRenderer.invoke(JEvent[JEvent.INVOKE_CLEAR_SUPERCHATS])
     },
+    exportSuperChat: () => {
+      return ipcRenderer.invoke(JEvent[JEvent.INVOKE_EXPORT_SUPERCHATS])
+    },
     callCommand: (command: string) => {
       return ipcRenderer.invoke(JEvent[JEvent.INVOKE_CALL_COMMAND], command)
     },
@@ -239,6 +245,9 @@ contextBridge.exposeInMainWorld('jliverAPI', {
     },
     getRankList: (page: number, page_size: number) => {
       return ipcRenderer.invoke(JEvent[JEvent.INVOKE_GET_RANK], page, page_size)
+    },
+    getVideoInfo: (bvID: string) => {
+      return ipcRenderer.invoke(JEvent[JEvent.INVOKE_GET_VIDEO_INFO], bvID)
     },
   },
   plugin: {

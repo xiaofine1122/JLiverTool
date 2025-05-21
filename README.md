@@ -1,3 +1,28 @@
+
+# JLiverTool 本地化修改
+
+## 主要变更内容
+
+### 窗口行为修改
+- 打开的子窗口都是独立的，不会跟随主窗口缩小
+
+### 醒目留言页面修改
+1. 功能增强：
+   - 增加了导出按钮
+   - 增加了右键复制功能
+   - 增加了右键已读/未读功能
+   - 增加了BV号识别，自动转为视频链接功能
+2. 功能移除：
+   - 移除了双击删除功能
+3. 界面优化：
+   - 渲染顺序改为从最上插入(滚动到最下面总差一点)
+   - 界面上抹除了原项目的自动更新和关于中的内容
+
+![醒目留言界面截图](imgs/scchangedwindow.png)
+
+## 原项目说明
+(以下为原README内容保持不变)
+
 # JLiverTool
 
 [![CodeFactor](https://www.codefactor.io/repository/github/xinrea/jlivertool/badge)](https://www.codefactor.io/repository/github/xinrea/jlivertool)

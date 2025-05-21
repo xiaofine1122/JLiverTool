@@ -87,4 +87,11 @@ describe('BiliApi', function () {
       resp.code.should.eq(0)
     })
   })
+  describe('#getVideoInfo', function () {
+    it('🤔should stop live successfully with valid cookies', async function () {
+      const cookies = readTestingCookies()
+      const resp = await BiliApi.GetVideoInfo(cookies, 'BV1HjEYzxEwb')
+      resp.code.should.eq(0)
+    })
+  })
 })

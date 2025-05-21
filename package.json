@@ -1,8 +1,8 @@
 {
   "name": "jlivertool",
   "version": "develop",
-  "description": "Simple Bilibili Danmaku Tool",
-  "homepage": "https://github.com/Xinrea/JLiveTool",
+  "description": "Simple Bilibili Danmaku Tool Personalized modification",
+  "homepage": "https://github.com/xiaofine1122/JLiveTool",
   "main": "src/main.js",
   "scripts": {
     "start": "npx webpack && cross-env DEBUG=true electron . --trace-warnings",
