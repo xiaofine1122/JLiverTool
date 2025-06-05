@@ -164,7 +164,7 @@ const account_setting = {
     }
   },
   user_info: {
-    face: 'https://i0.hdslb.com/bfs/face/member/noface.jpg',
+    face: 'i0.hdslb.com/bfs/face/member/noface.jpg',
   },
   login: false,
   qr_dialog: false,
@@ -188,6 +188,7 @@ const account_setting = {
       switch (qr_status.status) {
         case 2:
           const cookies = qr_status.cookies as Cookies
+          // console.info('cookies',cookies)
           window.jliverAPI.set('config.cookies', cookies)
           window.jliverAPI.set('config.login', true)
           this.login = true
